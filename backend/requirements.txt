@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+pandas
+scikit-learn
+python-multipart
+python-dotenv
+httpx
+loguru 
