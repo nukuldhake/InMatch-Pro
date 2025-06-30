@@ -8,8 +8,6 @@ This is the FastAPI backend for the InMatch Pro IPL Strategy Assistant. It provi
 - Player stats lookup
 - Player clustering
 - Fantasy points estimation
-- MVP prediction
-- Health check and monitoring
 
 ## Project Structure
 ```

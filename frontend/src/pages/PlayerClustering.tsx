@@ -261,7 +261,14 @@ const PlayerClustering = () => {
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {clusters.find((c: any) => c.cluster_label === selectedCluster)?.members.map((player: string, idx: number) => (
-                <Badge key={idx} variant="outline">{player}</Badge>
+                <Badge
+                  key={idx}
+                  variant="outline"
+                  className="cursor-pointer hover:bg-blue-100 transition"
+                  onClick={() => navigate(`/player-stats-lookup?player=${encodeURIComponent(player)}`)}
+                >
+                  {player}
+                </Badge>
               ))}
             </div>
           </CardContent>
