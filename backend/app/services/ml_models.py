@@ -16,10 +16,14 @@ FEATURE_COLUMNS_PATH = os.path.join(LIVE_MATCH_MODEL_DIR, "score_feature_columns
 
 # Load model and encoders at module load
 def _load_model_and_encoders():
-    model = joblib.load(MODEL_PATH)
-    le_dict = joblib.load(LE_DICT_PATH)
-    label_encoder = joblib.load(LABEL_ENCODER_PATH)
-    return model, le_dict, label_encoder
+    try:
+        model = joblib.load(MODEL_PATH)
+        le_dict = joblib.load(LE_DICT_PATH)
+        label_encoder = joblib.load(LABEL_ENCODER_PATH)
+        return model, le_dict, label_encoder
+    except Exception as e:
+        print(f"Warning: Could not load match winner models: {e}")
+        return None, None, None
 
 best_model, le_dict, label_encoder = _load_model_and_encoders()
 
@@ -37,7 +41,11 @@ except Exception as e:
     print("MODEL/SCALER LOAD ERROR:", e)
     score_model, score_scaler = None, None
 
-feature_columns = joblib.load(FEATURE_COLUMNS_PATH)
+try:
+    feature_columns = joblib.load(FEATURE_COLUMNS_PATH)
+except Exception as e:
+    print(f"Warning: Could not load feature columns: {e}")
+    feature_columns = []
 
 # List of all possible teams and venues for one-hot encoding (should match training)
 ALL_TEAMS = [
