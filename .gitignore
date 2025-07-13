@@ -120,15 +120,15 @@ celerybeat.pid
 .dmypy.json
 dmypy.json
 
-# Machine Learning Models (sensitive/large files)
-*.pkl
-*.h5
-*.joblib
-*.model
-*.weights
-*.ckpt
-backend/app/services/models/
-!backend/app/services/models/.gitkeep
+# Machine Learning Models - Now included for portfolio showcase
+# *.pkl
+# *.h5
+# *.joblib
+# *.model
+# *.weights
+# *.ckpt
+# backend/app/services/models/
+# !backend/app/services/models/.gitkeep
 
 # API Keys and Secrets
 **/secrets/

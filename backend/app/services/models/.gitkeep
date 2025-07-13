@@ -1,0 +1,6 @@
+# This directory contains ML models
+# Models are not included in the repository due to size and sensitivity
+# For local development, place your trained models here:
+# - *.pkl files (scikit-learn models)
+# - *.h5 files (TensorFlow models)
+# - live_match_predictor/ directory with TensorFlow models
