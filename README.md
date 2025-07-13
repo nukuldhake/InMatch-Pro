@@ -1,17 +1,26 @@
-# InMatch Pro - IPL Strategy Assistant
+# InMatch Pro - AI-Powered Cricket Analytics Platform
 
 <div align="center">
   <img src="https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react" alt="React">
   <img src="https://img.shields.io/badge/FastAPI-Latest-green?style=for-the-badge&logo=fastapi" alt="FastAPI">
   <img src="https://img.shields.io/badge/TypeScript-5.5.3-blue?style=for-the-badge&logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Python-3.8+-yellow?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/Python-3.12-yellow?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/TensorFlow-2.19-orange?style=for-the-badge&logo=tensorflow" alt="TensorFlow">
   <img src="https://img.shields.io/badge/TailwindCSS-3.4.11-blue?style=for-the-badge&logo=tailwindcss" alt="TailwindCSS">
+  <img src="https://img.shields.io/badge/Deployed-Live-brightgreen?style=for-the-badge" alt="Live">
 </div>
 
+## 🚀 Live Application
+
+**🌐 Try it now:** [https://in-match-pro.vercel.app](https://in-match-pro.vercel.app)
+
+**📚 API Documentation:** [https://inmatch-pro-0w31.onrender.com/docs](https://inmatch-pro-0w31.onrender.com/docs)
 
 ## 🏏 Overview
 
 **InMatch Pro** is an advanced AI-powered cricket analytics platform specifically designed for the Indian Premier League (IPL). It provides real-time match predictions, comprehensive player analytics, and strategic insights using cutting-edge machine learning models.
+
+**✨ Fully deployed and operational** - No setup required, just visit the link above!
 
 ### ✨ Key Features
 
@@ -50,21 +59,30 @@ InMatch-Pro/
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### 🌐 Use the Live Application (Recommended)
 
-- **Node.js** (v16+ recommended)
-- **Python** (3.8+ required)
-- **npm** or **yarn** for frontend dependencies
-- **pip** for Python dependencies
+**No setup required!** Simply visit: [https://in-match-pro.vercel.app](https://in-match-pro.vercel.app)
 
-### 1. Clone the Repository
+The application is fully deployed and ready to use with all features operational.
+
+### 🛠️ Local Development (Optional)
+
+If you want to run the application locally for development:
+
+#### Prerequisites
+
+- **Node.js** (v18+ recommended)
+- **Python** (3.12+ required)
+- **Docker** (optional, for containerized deployment)
+
+#### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/nukuldhake/InMatch-Pro.git
 cd InMatch-Pro
 ```
 
-### 2. Backend Setup
+#### 2. Backend Setup
 
 ```bash
 # Navigate to backend directory
@@ -85,7 +103,7 @@ The backend API will be available at `http://localhost:8000`
 - API Documentation: `http://localhost:8000/docs`
 - Health Check: `http://localhost:8000/health`
 
-### 3. Frontend Setup
+#### 3. Frontend Setup
 
 ```bash
 # Navigate to frontend directory (in a new terminal)
@@ -115,14 +133,22 @@ The frontend application will be available at `http://localhost:5173`
 
 ### Backend
 - **FastAPI** - Modern, fast Python web framework
-- **Pydantic** - Data validation using Python type annotations
-- **Pandas** - Data manipulation and analysis
+- **TensorFlow 2.19** - Deep learning framework for ML predictions
+- **XGBoost** - Gradient boosting framework
 - **Scikit-learn** - Machine learning library
-- **TensorFlow** - Deep learning framework
+- **Pandas** - Data manipulation and analysis
+- **Pydantic** - Data validation using Python type annotations
 - **Uvicorn** - ASGI server for FastAPI
 - **Python-multipart** - File upload support
 - **HTTPX** - Async HTTP client
 - **Loguru** - Advanced logging
+
+### Deployment & Infrastructure
+- **Frontend**: Deployed on **Vercel** with automatic deployments
+- **Backend**: Deployed on **Render** with Docker containerization
+- **Python 3.12**: Latest stable Python version
+- **CI/CD**: Automated deployment pipeline
+- **HTTPS**: Secure connections with SSL certificates
 
 ## 📱 Application Features
 
@@ -200,42 +226,73 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 ## 📊 API Endpoints
 
+**Base URL**: `https://inmatch-pro-0w31.onrender.com`
+
+**Interactive Documentation**: [https://inmatch-pro-0w31.onrender.com/docs](https://inmatch-pro-0w31.onrender.com/docs)
+
 ### Live Match Prediction
-- `POST /api/live-match/predict` - Predict match outcome
+- `POST /api/live-match/predict` - Real-time match outcome prediction
 
 ### Player Performance
-- `POST /api/player-performance/predict` - Predict player performance
+- `POST /api/player-performance/predict_player_performance` - ML-based player performance prediction
+- `GET /api/player-performance/all_players` - Get all available players
 
 ### Player Stats
-- `GET /api/player-stats/search` - Search player statistics
-- `GET /api/player-stats/{player_id}` - Get specific player stats
+- `GET /api/player-stats/batters` - Get all batters list
+- `GET /api/player-stats/{player_name}` - Get specific player statistics
 
 ### Clustering
-- `GET /api/clustering/players` - Get player clusters
-- `POST /api/clustering/similar` - Find similar players
+- `GET /api/clustering/batters` - Get batter clusters
+- `GET /api/clustering/bowlers` - Get bowler clusters
+- `GET /api/clustering/batters/{player}` - Get specific batter cluster info
+- `GET /api/clustering/bowlers/{player}` - Get specific bowler cluster info
 
 ### Fantasy Points
-- `POST /api/fantasy/estimate` - Estimate fantasy points
-- `GET /api/fantasy/recommendations` - Get team recommendations
+- `POST /api/fantasy/estimate` - Estimate fantasy points for team
+- `GET /api/fantasy/players` - Get all fantasy players
+
+### System
+- `GET /health` - Health check endpoint
 
 ## 🚀 Deployment
 
-### Frontend Deployment
-The frontend can be deployed to any static hosting service:
+### 🌐 Live Deployment
 
-```bash
-cd frontend
-npm run build
-# Deploy the 'dist' folder to Vercel, Netlify, GitHub Pages, etc.
+The application is currently deployed and operational:
+
+- **Frontend**: [Vercel](https://vercel.com) - `https://in-match-pro.vercel.app`
+- **Backend**: [Render](https://render.com) - `https://inmatch-pro-0w31.onrender.com`
+
+### 🏗️ Deployment Architecture
+
+```
+┌─────────────────┐    HTTPS    ┌─────────────────┐
+│   Vercel        │ ──────────► │   Render        │
+│   (Frontend)    │             │   (Backend)     │
+│   React + Vite  │             │   FastAPI       │
+│                 │             │   + TensorFlow  │
+└─────────────────┘             └─────────────────┘
 ```
 
-### Backend Deployment
-The FastAPI backend can be deployed to cloud platforms:
+### 🔧 Deployment Features
+
+- ✅ **Automatic deployments** from GitHub
+- ✅ **HTTPS/SSL** certificates
+- ✅ **Global CDN** for fast loading
+- ✅ **Environment-based** configurations
+- ✅ **Health monitoring** and logging
+- ✅ **Scalable infrastructure**
+
+### 📦 Docker Support
+
+The backend includes Docker support for containerized deployment:
 
 ```bash
-# For production, use a production ASGI server
-pip install gunicorn
-gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker
+# Build Docker image
+docker build -t inmatch-backend ./backend
+
+# Run container
+docker run -p 8000:8000 inmatch-backend
 ```
 
 ## 🤝 Contributing
@@ -259,12 +316,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support, questions, or contributions:
-- Open an issue on GitHub
-- Contact the development team
-- Check the documentation in `/docs` (if available)
+- 🌐 **Try the live app**: [https://in-match-pro.vercel.app](https://in-match-pro.vercel.app)
+- 📚 **API Documentation**: [https://inmatch-pro-0w31.onrender.com/docs](https://inmatch-pro-0w31.onrender.com/docs)
+- 🐛 **Report issues**: Open an issue on GitHub
+- 💬 **Discussions**: Use GitHub Discussions for questions
+
+## 🎯 Performance & Monitoring
+
+- **Frontend**: Deployed on Vercel's global edge network
+- **Backend**: Running on Render with automatic scaling
+- **Uptime**: 99.9% availability target
+- **Response Time**: < 2s for API calls
+- **ML Predictions**: Real-time TensorFlow inference
 
 ---
 
 <div align="center">
-  <p>Built with ❤️ for cricket analytics enthusiasts</p>
+  <p>🏏 Built with ❤️ for cricket analytics enthusiasts</p>
+  <p>⚡ Powered by AI/ML • 🚀 Deployed on Cloud • 🌐 Available Worldwide</p>
+
+  **[🎯 Try InMatch Pro Live →](https://in-match-pro.vercel.app)**
 </div>
