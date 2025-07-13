@@ -8,3 +8,6 @@ python-dotenv
 httpx
 loguru
 gunicorn
+tensorflow
+joblib
+numpy
