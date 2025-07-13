@@ -10,5 +10,5 @@ loguru
 gunicorn
 joblib
 numpy
-tensorflow==2.19.0
+tensorflow==1.26.1
 xgboost
