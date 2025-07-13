@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 from app.routes import (
     live_match,
@@ -9,18 +11,38 @@ from app.routes import (
     fantasy,
 )
 
-app = FastAPI(title="InMatch Pro API", version="1.0.0")
+# Load environment variables
+load_dotenv()
+
+# Configuration
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+CORS_ORIGINS = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:8080,http://localhost:3000"
+).split(",")
+
+app = FastAPI(
+    title="InMatch Pro API",
+    version="1.0.0",
+    description="AI-powered cricket analytics platform for IPL",
+    docs_url="/docs" if ENVIRONMENT == "development" else None,
+    redoc_url="/redoc" if ENVIRONMENT == "development" else None,
+)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080", "http://localhost:3000"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Include all route modules
-app.include_router(live_match.router, prefix="/api/live-match", tags=["Live Match"])
+app.include_router(
+    live_match.router,
+    prefix="/api/live-match",
+    tags=["Live Match"]
+)
 app.include_router(
     player_performance.router,
     prefix="/api/player-performance",
@@ -42,6 +64,7 @@ app.include_router(
     tags=["Fantasy"],
 )
 
+
 @app.get("/health", tags=["Health"])
 def health_check():
-    return {"status": "ok"} 
+    return {"status": "ok", "environment": ENVIRONMENT}
