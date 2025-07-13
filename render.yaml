@@ -1,17 +1,16 @@
 services:
   - type: web
     name: inmatch-backend
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
     healthCheckPath: "/health"
     envVars:
       - key: ENVIRONMENT
         value: production
       - key: PYTHONPATH
-        value: /opt/render/project/src
+        value: /app
       - key: CORS_ORIGINS
-        value: https://your-frontend-url.onrender.com
+        value: https://in-match-pro.vercel.app
     
   - type: static
     name: inmatch-frontend
