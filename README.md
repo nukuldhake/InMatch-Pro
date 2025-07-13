@@ -8,6 +8,7 @@
   <img src="https://img.shields.io/badge/TailwindCSS-3.4.11-blue?style=for-the-badge&logo=tailwindcss" alt="TailwindCSS">
 </div>
 
+
 ## 🏏 Overview
 
 **InMatch Pro** is an advanced AI-powered cricket analytics platform specifically designed for the Indian Premier League (IPL). It provides real-time match predictions, comprehensive player analytics, and strategic insights using cutting-edge machine learning models.
