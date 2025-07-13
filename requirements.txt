@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic
+pandas
+scikit-learn
+python-multipart
+python-dotenv
+httpx
+loguru
+gunicorn
