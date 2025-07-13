@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: inmatch-backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    healthCheckPath: "/health"
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+      - key: CORS_ORIGINS
+        value: https://your-frontend-url.onrender.com
+    
+  - type: static
+    name: inmatch-frontend
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: "./frontend/dist"
+    envVars:
+      - key: VITE_API_URL
+        value: https://your-backend-url.onrender.com
+      - key: VITE_ENVIRONMENT
+        value: production
+    routes:
+      - type: rewrite
+        source: "/api/*"
+        destination: "https://your-backend-url.onrender.com/api/*"
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
