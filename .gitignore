@@ -1,4 +1,4 @@
-# Environment files
+# Environment files (SAFE TO IGNORE - platforms generate their own)
 .env
 .env.local
 .env.production
@@ -7,10 +7,16 @@
 *.env
 !.env.example
 
-# Python
+# Python cache files (SAFE TO IGNORE - Python regenerates automatically)
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+*.pyo
+*.pyd
+**/__pycache__/
+
+# Python build artifacts (SAFE TO IGNORE - not needed for deployment)
 *.so
 .Python
 build/
@@ -29,12 +35,6 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
-# Python cache files (already committed by mistake)
-**/__pycache__/
-*.pyc
-*.pyo
-*.pyd
 
 # Virtual environments
 venv/
@@ -120,17 +120,10 @@ celerybeat.pid
 .dmypy.json
 dmypy.json
 
-# Machine Learning Models - Now included for portfolio showcase
-# *.pkl
-# *.h5
-# *.joblib
-# *.model
-# *.weights
-# *.ckpt
-# backend/app/services/models/
-# !backend/app/services/models/.gitkeep
+# ML Models - KEEPING THESE (needed for app functionality)
+# Models are included for complete portfolio demonstration
 
-# API Keys and Secrets
+# API Keys and Secrets (SAFE TO IGNORE - sensitive data)
 **/secrets/
 **/keys/
 *.key
@@ -138,28 +131,28 @@ dmypy.json
 *.p12
 *.pfx
 
-# Database files
+# Database files (SAFE TO IGNORE - not used in this project)
 *.db
 *.sqlite
 *.sqlite3
 
-# Deployment specific files (keep examples)
-docker-compose.override.yml
-.dockerignore
-
-# Test files and temporary scripts
+# Development/Test files (SAFE TO IGNORE - not needed for production)
 test_*.py
 *_test.py
 simple_main.py
 temp_*.py
+*.tmp
+*.temp
 
-# Package lock files (keep package.json)
+# Lock files (SAFE TO IGNORE - platforms regenerate from package.json)
 package-lock.json
 yarn.lock
 bun.lockb
 
-# Runtime and deployment configs (keep examples)
+# Platform-specific deployment configs (SAFE TO IGNORE - using Docker/render.yaml)
 runtime.txt
 nixpacks.toml
 railway.toml
+
+# Keep example files
 !*.example.*
