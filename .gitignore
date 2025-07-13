@@ -3,6 +3,9 @@
 .env.local
 .env.production
 .env.staging
+.env.development
+*.env
+!.env.example
 
 # Python
 __pycache__/
@@ -26,6 +29,12 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Python cache files (already committed by mistake)
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Virtual environments
 venv/
@@ -110,3 +119,47 @@ celerybeat.pid
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Machine Learning Models (sensitive/large files)
+*.pkl
+*.h5
+*.joblib
+*.model
+*.weights
+*.ckpt
+backend/app/services/models/
+!backend/app/services/models/.gitkeep
+
+# API Keys and Secrets
+**/secrets/
+**/keys/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Deployment specific files (keep examples)
+docker-compose.override.yml
+.dockerignore
+
+# Test files and temporary scripts
+test_*.py
+*_test.py
+simple_main.py
+temp_*.py
+
+# Package lock files (keep package.json)
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Runtime and deployment configs (keep examples)
+runtime.txt
+nixpacks.toml
+railway.toml
+!*.example.*
