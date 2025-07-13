@@ -10,4 +10,3 @@ loguru
 gunicorn
 joblib
 numpy
-tensorflow==2.13.0
