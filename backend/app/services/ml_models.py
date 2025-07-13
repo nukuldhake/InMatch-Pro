@@ -49,13 +49,9 @@ def _load_score_model_and_scaler():
     return model, scaler
 
 try:
-    if TF_AVAILABLE:
-        score_model, score_scaler = _load_score_model_and_scaler()
-        print("Score model loaded:", score_model is not None)
-        print("Score scaler loaded:", score_scaler is not None)
-    else:
-        score_model, score_scaler = None, None
-        print("TensorFlow not available - score models disabled")
+    score_model, score_scaler = _load_score_model_and_scaler()
+    print("Score model loaded:", score_model is not None)
+    print("Score scaler loaded:", score_scaler is not None)
 except Exception as e:
     print("MODEL/SCALER LOAD ERROR:", e)
     score_model, score_scaler = None, None
@@ -182,8 +178,7 @@ def get_certainty(prob):
 
 def predict_innings_score(features: dict):
     if not TF_AVAILABLE or score_model is None or score_scaler is None:
-        # Return mock data when models are not available
-        return 150, 0.5, "low", features
+        raise RuntimeError("Score prediction model or scaler not loaded.")
     X = preprocess_score_features(features)
     score_pred, win_prob = score_model.predict(X)
     predicted_score = int(round(score_pred[0][0]))

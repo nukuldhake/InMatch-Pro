@@ -11,17 +11,10 @@ router = APIRouter()
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 MODELS_PATH = os.path.join(BASE_PATH, "../services/models")
 
-try:
-    batter_model = joblib.load(os.path.join(MODELS_PATH, "batter_model.pkl"))
-    bowler_model = joblib.load(os.path.join(MODELS_PATH, "bowler_model.pkl"))
-    batter_summary = joblib.load(os.path.join(MODELS_PATH, "batter_summary.pkl"))
-    bowler_summary = joblib.load(os.path.join(MODELS_PATH, "bowler_summary.pkl"))
-except Exception as e:
-    print(f"Warning: Could not load player performance models: {e}")
-    batter_model = None
-    bowler_model = None
-    batter_summary = None
-    bowler_summary = None
+batter_model = joblib.load(os.path.join(MODELS_PATH, "batter_model.pkl"))
+bowler_model = joblib.load(os.path.join(MODELS_PATH, "bowler_model.pkl"))
+batter_summary = joblib.load(os.path.join(MODELS_PATH, "batter_summary.pkl"))
+bowler_summary = joblib.load(os.path.join(MODELS_PATH, "bowler_summary.pkl"))
 
 class PlayerIn(BaseModel):
     name: str

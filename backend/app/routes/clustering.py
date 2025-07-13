@@ -9,21 +9,13 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '../services/data')
 batter_clusters_path = os.path.join(DATA_DIR, 'batter_clusters.csv')
 bowler_clusters_path = os.path.join(DATA_DIR, 'bowler_clusters.csv')
 
-try:
-    batter_df = pd.read_csv(batter_clusters_path)
-    batter_df.columns = [c.strip() for c in batter_df.columns]
-    print("Batter columns:", batter_df.columns.tolist())
-except Exception as e:
-    print(f"Warning: Could not load batter clusters: {e}")
-    batter_df = pd.DataFrame()
+batter_df = pd.read_csv(batter_clusters_path)
+batter_df.columns = [c.strip() for c in batter_df.columns]
+print("Batter columns:", batter_df.columns.tolist())
 
-try:
-    bowler_df = pd.read_csv(bowler_clusters_path)
-    bowler_df.columns = [c.strip() for c in bowler_df.columns]
-    print("Bowler columns:", bowler_df.columns.tolist())
-except Exception as e:
-    print(f"Warning: Could not load bowler clusters: {e}")
-    bowler_df = pd.DataFrame()
+bowler_df = pd.read_csv(bowler_clusters_path)
+bowler_df.columns = [c.strip() for c in bowler_df.columns]
+print("Bowler columns:", bowler_df.columns.tolist())
 
 @router.get('/batters')
 def get_batter_clusters():

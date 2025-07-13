@@ -15,13 +15,8 @@ MODEL_DIR = os.path.join(
 FANTASY_MODEL_PATH = os.path.join(MODEL_DIR, "fantasy_model.pkl")
 FANTASY_SUMMARY_PATH = os.path.join(MODEL_DIR, "fantasy_player_summary.pkl")
 
-try:
-    fantasy_model = joblib.load(FANTASY_MODEL_PATH)
-    player_summary = joblib.load(FANTASY_SUMMARY_PATH)
-except Exception as e:
-    print(f"Warning: Could not load fantasy models: {e}")
-    fantasy_model = None
-    player_summary = None
+fantasy_model = joblib.load(FANTASY_MODEL_PATH)
+player_summary = joblib.load(FANTASY_SUMMARY_PATH)
 
 FANTASY_FEATURES = [
     'batsman_runs', 'wickets_taken', 'caught', 'stumped', 'run_out'
