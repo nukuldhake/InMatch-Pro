@@ -32,7 +32,7 @@ export default function PlayerStatsLookup() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/player-stats/batters")
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/player-stats/batters`)
       .then(res => res.json())
       .then(data => setBatters(data.batters))
       .catch(() => setError("Failed to load batters list"));
@@ -58,7 +58,7 @@ export default function PlayerStatsLookup() {
     setSelectedPlayer(playerName);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:8000/api/player-stats/${encodeURIComponent(playerName)}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/player-stats/${encodeURIComponent(playerName)}`);
       if (!res.ok) throw new Error("Player not found");
       const data = await res.json();
       setPlayerData(data);
