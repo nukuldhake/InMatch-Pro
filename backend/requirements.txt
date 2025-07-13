@@ -2,3 +2,12 @@ fastapi
 uvicorn[standard]
 pydantic
 python-dotenv
+pandas
+scikit-learn
+python-multipart
+httpx
+loguru
+gunicorn
+joblib
+numpy
+tensorflow==2.15.0
