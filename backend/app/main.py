@@ -67,4 +67,10 @@ app.include_router(
 
 @app.get("/health", tags=["Health"])
 def health_check():
-    return {"status": "ok", "environment": ENVIRONMENT}
+    import sys
+    return {
+        "status": "ok",
+        "environment": ENVIRONMENT,
+        "python_version": sys.version,
+        "python_version_info": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
+    }
